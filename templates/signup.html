@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lucky-number-signup</title>
+    <style>
+        body{
+            background-color: rgb(73, 58, 58);
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        header{
+            background-color: navy;
+            color: aquamarine;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            
+        }
+        header h1{
+            padding-left: 20px;
+        }
+        header button{
+            position: fixed;
+            right: 10px;
+            top: 30px;
+            color: white;
+            border: none;
+            background-color: rgb(243, 79, 79);
+            border-radius: 10px;
+            border-color: aquamarine;
+            font-size: large;
+            cursor: pointer;
+            border-radius: .3em;
+            padding: 5px;
+            transition: .3s all;
+        }
+        header button:hover{
+            background-color: red;
+            transform: translateX(5px);
+        }
+        header div{
+            display: flex;
+            flex-direction: row;
+        }
+        main{
+            position: absolute;
+            top: 17%;
+            padding-top: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+            width: 90%;
+            background-color: aqua;
+            border-radius: 10px;
+            border-color: red;
+            
+        } 
+        .sign-content{
+            padding: 10px;
+            padding-top: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        } 
+        #inpt{
+            padding: 10px;
+            padding-left: 30px;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+        } 
+        #label{
+            padding: 20px;
+            font-size: large;
+        }  
+        .username #label{
+            padding-right: 60px;
+        }
+        #label_email{
+            padding: 40px;
+        }
+        .email{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .email #label{
+            padding-right: 60px;
+        }
+        .email input{
+            padding-right: 0px;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            padding-left: 40px;
+            /* width: 180px; */
+        }
+        .password{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .password #label{
+            padding-right: 50px;
+        }
+        .password input{
+            padding-right: 0px;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+        } 
+        .telephone{
+            /* padding: 10px; */
+        }
+        .telephone label{
+            padding: 20px;
+            font-size: large;
+        }
+        #sbmt-btn{
+            background-color: rgb(7, 106, 73);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            padding: 10px;
+            font-size: large;
+            width: 50%;
+            cursor: pointer;
+            transition: .3s all;
+        }
+        #sbmt-btn:hover{
+            background-color: green;
+            transform: translateY(5px);
+        }
+        .reg-btn{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .message-body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        .message{
+            color: red;
+            background-color: rgb(225, 245, 245);
+            width: 300px;
+            height: 30px;
+            
+        }
+          
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>LUCKY NUMBER</h1>
+            <a href="{% url 'login' %}"><button onclick="login()">Log In</button></a>
+        </div>
+    </header>
+    <main>
+        <h1>Register</h1>
+
+        <div class="sign-content">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="username">
+                    <label id="label" for="name" >Name:</label>
+                    <input id="inpt" type="text" name="username" placeholder="John Doe" required>
+                </div>
+               <br>
+                <div class="email">
+                    <label id="label" for="email" name="email">Email:</label>
+                    <input id="input" type="email" name="email" placeholder="johndoe@gmail.com" required>
+                </div>
+                <br>
+                <div class="password">
+                    <label id="label" for="password" name="password">Password:</label>
+                    <input  type="password" name="password" placeholder="*********" required>
+                </div>
+                <br>
+                <div class="telephone">
+                    <label id="label" for="contact">Telephone:</label>
+                    <input id="inpt" type="tel" placeholder="0774-XXX-XXX" required>
+                </div>
+                <div class="reg-btn">
+                    <p>Already have an account? <a href="">LogIn</a></p>  
+                    <button id="sbmt-btn" type="submit">Submit</button>
+                </div>
+                <div class="message-body">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="message">
+                    {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </form>
+        </div>  
+    </main>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lucky-number-deposit</title>
+    <style>
+        body{
+            background-color: rgb(73, 58, 58);
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        header{
+            background-color: navy;
+            padding: 10px;
+            padding-left: 10%;
+            padding-right: 10%;
+            color: aquamarine;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            
+        }
+        .header-content{
+            margin: 0px;
+            padding-left: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            /* background-color: red; */
+        }
+
+        /* Menu icon (hamburger) */
+        .menu-icon {
+        margin: 0px;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        position: fixed;
+        top: 25px;
+        left: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* padding-top: 10px; */
+        }
+
+        .menu-icon .bar {
+        padding: 0px;
+        height: 3px;
+        width: 50%;
+        background-color: white;
+        border-radius: 2px;
+        background-color: aqua;
+        /* padding-top: 10px; */
+        }
+
+        /* Hidden menu */
+        .menu {
+        display: none;
+        background: navy;
+        padding: 5px;
+    }
+    
+    .menu ul {
+        list-style: none;
+        padding: 0;
+        /* background-color: navy; */
+    }
+    
+    .menu ul li {
+        margin: 0px 0;
+        padding-top: 5px;
+        padding-left: 20px;
+        }
+
+        .menu ul li a {
+        /* display: flex; */
+        flex-direction: row;
+        padding: 2px;
+        text-decoration: none;
+        color: aquamarine;
+        }
+        .menu ul li a:hover{
+            color: rgb(206, 17, 149);
+        }
+        #h1{
+            font-size: x-small;
+           
+        }
+        
+       
+         header button{
+            position: fixed;
+            right: 5px;
+            top: 30px;
+            color: white;
+            border: none;
+            background-color: rgb(243, 79, 79);
+            border-color: aquamarine;
+            font-size: small;
+            cursor: pointer; 
+            border-radius: .3em;
+            padding: 5px;
+            width: 70px;
+            transition: .3s all;
+        } 
+        header button:hover{
+            background-color: red;
+            transform: translateX(5px);
+        }
+        
+        main{
+            position: absolute;
+            top: 17%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+            width: 90%;
+            background-color: aqua;
+            border-radius: 10px;
+            border-color: red;
+            
+        }
+        .deposit{
+            display: flex;
+            flex-direction: row;
+        }
+        .deposit label{
+            padding-right: 30px;
+            font-size: large;
+        }
+        .deposit input{
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+        }
+        .deposit-contact{
+            display: flex;
+            flex-direction: row;
+            padding-top: 20px;
+        }
+        .deposit-contact label{
+            padding-right: 35px;
+            font-size: large;
+        }
+        .deposit-contact input{
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+        }
+        .deposit-name{
+            display: flex;
+            flex-direction: row;
+            padding-top: 20px;
+        }
+        .deposit-name label{
+            padding-right: 50px;
+            font-size: large;
+        }
+        .deposit-name input{
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            /* padding-left: 30px; */
+        }
+        .btn{
+            padding: 20px;
+            padding-left: 0px;
+        }
+        #sbt-btn{
+            color: white;
+            background-color: rgb(7, 106, 73);
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 100%;
+            transition: .3s all;
+        }
+        #sbt-btn:hover{
+            background-color: green;
+            transform: translateY(10px);
+        }
+        .message-body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        .message{
+            color: red;
+            background-color: rgb(225, 245, 245);
+            width: 300px;
+            height: 30px;
+            
+        }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <!-- Menu Icon -->
+            <div  class="menu-icon" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <!-- Hidden Menu -->
+            <nav id="menu" class="menu">
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a>
+                        <a href="{% url 'wallet' %}">Wallet</a>
+                        <a href="{% url 'deposit' %}">Deposit</a>
+                        <a href="{% url 'withdraw' %}">Withdraw</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div id="h1">
+                <h1>LUCKY NUMBER</h1>
+            </div>
+            <div >
+                <a id="hd-btn" href="{% url 'login' %}"><button onclick="logout()">Log Out</button></a>
+            </div>
+            
+        </div>
+    </header>
+    <main>
+        <h1>Deposit</h1>
+        <div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="deposit">
+                    <label for="amount">Amount:</label>
+                    <input name="amount" type="text" placeholder="UGX: 1000" required>
+                </div>
+                <div class="deposit-contact">
+                    <label for="contact">Marchant Code:</label>
+                    <label for="contact">7087350</label>
+                </div>
+                <div class="deposit-name">
+                    <label for="name">Name:</label>
+                    <label for="name">REAGAN</label>
+                </div>
+                <div class="btn">
+                    <button type="submit" id="sbt-btn">Submit</button>
+                </div>
+                <div class="message-body">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="message">
+                    {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+
+    </main>
+</body>
+<script>
+    function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+
+
+</script>
+</html>
