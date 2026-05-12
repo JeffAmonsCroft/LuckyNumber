@@ -21,9 +21,10 @@ from useraccounts import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),   
-    path('', views.homepage_view, name='index'),
-    path('useraccounts/login/', views.login_view, name='login'),
+    path('admin/', admin.site.urls),
+    path('', views.signup_view, name='signup'),
+    path('luckynumber-signup', views.signup_view, name='signup'),
+    path('luckynumber-login', views.login_view, name='login'),
     path('useraccounts/signup/', views.signup_view, name='signup'),
     path('pages/lose/', views.lose_view, name='lose'),
     path('win/', views.win_view, name='win'),
