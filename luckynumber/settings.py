@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-n_5^udlq6!_)m@%ck8smu#g6!ip1%db)9k&!knxrqxhvnn(vq%
 DEBUG = False
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://luckynumber-bxc3.onrender.com',
+    'https://luckynumber-bxc3.onrender.com',]
 
 ALLOWED_HOSTS = ['luckynumber-bxc3.onrender.com']
 
